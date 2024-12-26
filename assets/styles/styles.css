@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+.parent {
+    border: 5px solid blue;
+    /* position: relative; */
+}
+
+.child {
+    border: 5px solid red;
+    width: 100px;
+    height: 100px;
+}
+
+/* Static - значення за замовчуванням для всіх елементів, його приміняєм хіба якщо треба відмнити якйсь інший*/
+.child:nth-child(1) {
+    position: static;  
+}
+
+/*Relative - спосіб позицонування при якому місце за елементом резервується але при цьому елемент ми можем пересунути*/
+/*соваємо сам себе відносно свого положення*/
+/*top, right, bottom, left*/
+/*z-index - третій вимір, обираємо шар (відємне значення -1 - поставить наш елемент на найглибший шар, на нього накладуться всі інші елементи з якими він пересікається; додатнє значення перекладе його на найвищий шар, наш елемент убде перекривати всі елементи з якими він перетинається)*/
+.child:nth-child(2) {
+    background-color: yellow;
+    position: relative;
+    /* bottom: -50px; */
+    top: 20px;
+    right: 20px;
+    z-index: -1;
+}
+
+
+/*absolute - спосіб позицонування при якому місце за елементом не резервується при цьому елемент ми можем пересунути*/
+/*якщо елемент з абсолютним позиціонуванням не має батьківського елементу з позиціонуванням relative то наш елемент буде позиціонуватись відносно ViewPort але так робити немож*/
+/*батькіський елемент з relative може бути на кілька рівнів вище від нашого елемента, не повинен бути безпосередній батько, будь який предок підійде*/
+.child:nth-child(3) {
+    background-color: orange;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.child:nth-child(4) {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+header {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThbGSmfUk39qIxwGsTGLguB445lBOVKYRQUw&s');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bg-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color:rgba(5, 210, 60, 0.396);
+}
+
+
+/*fixed - місце в потоці не  резервується, елемент позиціонується відносно viewPort*/
+.child:nth-child(5) {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+/*sticky - гібрид relative та fixed позиціонування*/
+/*дозволяє елементу поводитись як relative допоки не доскролити до конкретної точки, після чого він стає fixed*/
+/*використовується для навігації, випадаючих меню, тощо*/
+
+
+
+/*Правилом гарного тону в позиціонування елементів є використання позиціонування лише в титх випадках коли іншим способом не можливо*/
